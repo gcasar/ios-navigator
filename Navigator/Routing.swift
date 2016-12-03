@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 
-typealias RouteBundle = [String:String];
-typealias ViewControllerInflater = (Intent)->UIViewController?;
-typealias RouteConditionChecker = (Intent)->Bool;
+public typealias RouteBundle = [String:String];
+public typealias ViewControllerInflater = (Intent)->UIViewController?;
+public typealias RouteConditionChecker = (Intent)->Bool;
 
 //  The Routable protocol is not ment to initialize the ViewController but rather
 //  to create an abstract way to set controller's paramaters after it was inflated.
@@ -48,18 +48,18 @@ protocol NavigatableControlerContainer{
 public class Navigator{
     open static let instance = Navigator();
 
-    var window:UIWindow! = nil;
+    public var window:UIWindow! = nil;
 
-    var router:Router = Router.instance;
+    public var router:Router = Router.instance;
 
 
-    func open(path:String){
+    public func open(path:String){
         if let vc = router.route(path){
             window.rootViewController = vc;
         }
     }
 
-    func open(with:[UIApplicationLaunchOptionsKey: Any]?){
+    public func open(with:[UIApplicationLaunchOptionsKey: Any]?){
         window = UIWindow(frame: UIScreen.main.bounds);
         window.makeKeyAndVisible();
 
