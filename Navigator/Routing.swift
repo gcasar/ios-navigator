@@ -22,16 +22,16 @@ typealias RouteConditionChecker = (Intent)->Bool;
 //  can rebind itself or "react" to an Intent at any point in its lifecycle.
 //
 //  gcasar on 17/11/2016
-protocol IntentConsumer{
+public protocol IntentConsumer{
     func on(intent:Intent);
 }
 
-protocol FromStoryboard{
+public protocol FromStoryboard{
     static var _STORYBOARD_ID:String{get set};
     static var _STORYBOARD_NAME:String{get set};
 }
 
-enum RouterError: Error{
+public enum RouterError: Error{
     case badSchema(String)
     case schemaDoesNotMatch(String)
 }
@@ -45,7 +45,7 @@ protocol NavigatableControlerContainer{
     func navigate(intent:Intent, child:UIViewController.Type)->UIViewController?;
 }
 
-class Navigator{
+public class Navigator{
     open static let instance = Navigator();
 
     var window:UIWindow! = nil;
@@ -71,7 +71,7 @@ class Navigator{
     }
 }
 
-class Router{
+public class Router{
     //singleton
     open static let instance = Router();
 
@@ -122,7 +122,7 @@ class Router{
     }
 
     @discardableResult
-    func map(
+    public func map(
         path:String,
         to: @escaping ViewControllerInflater)->URLSchema
     {
@@ -130,7 +130,7 @@ class Router{
     }
 
     @discardableResult
-    func map(
+    public func map(
         path:String,
         where conditions:[RouteConditionChecker],
         to: @escaping ViewControllerInflater)
@@ -147,7 +147,7 @@ class Router{
     /// Insert an array of routes
     ///
     @discardableResult
-    func map(
+    public func map(
         _ maps:[[String:Any]]
         )->[URLSchema]
     {
@@ -184,7 +184,7 @@ class Router{
         }
     }
 
-    func route(_ path:String) -> UIViewController?{
+    public func route(_ path:String) -> UIViewController?{
         if let intent = findMatchingSchema(forPath: path){
             return controller(from:intent);
         }
@@ -192,7 +192,7 @@ class Router{
         return nil;
     }
 
-    func match(_ path:String) -> Intent?{
+    public func match(_ path:String) -> Intent?{
         return findMatchingSchema(forPath: path);
     }
 
@@ -247,7 +247,7 @@ class Router{
         return nil;
     }
 
-    func controller(from intent:Intent)->UIViewController?{
+    public func controller(from intent:Intent)->UIViewController?{
         if let inflater = controllerInflaters[intent.key]{
             return inflater(intent);
         }
@@ -266,7 +266,7 @@ class Router{
 
 
     //wrapper function
-    static func controller(_ viewControllerType:UIViewController.Type)->ViewControllerInflater{
+    public static func controller(_ viewControllerType:UIViewController.Type)->ViewControllerInflater{
         if let vct = viewControllerType as? FromStoryboard.Type{
             return controllerFromStoryboard(vct);
         }else{
@@ -277,7 +277,7 @@ class Router{
         }
     }
 
-    static func controller(_ viewControllerName:String, inStoryboard:String)->ViewControllerInflater{
+    public static func controller(_ viewControllerName:String, inStoryboard:String)->ViewControllerInflater{
         let name = viewControllerName;
         let storyboard = inStoryboard;
         return {
@@ -287,7 +287,7 @@ class Router{
         }
     }
 
-    static func controllerFromStoryboard(_ viewControllerType:FromStoryboard.Type)->ViewControllerInflater{
+    public static func controllerFromStoryboard(_ viewControllerType:FromStoryboard.Type)->ViewControllerInflater{
         let name = viewControllerType._STORYBOARD_ID;
         let storyboard = viewControllerType._STORYBOARD_NAME;
         return {
@@ -302,7 +302,7 @@ class Router{
 //TODO: extend by also using components of (URLComponents) other than path
 //ex: full scheme is "https://gcasar.si:666/match/12/comments/?salt=eF3R"
 //ex: at the moment only the "/match/12/comments/" is used in our routing
-struct URLSchema{
+public struct URLSchema{
     //raw structure information
     //ex: /match/:id/comments/
     let path:String;
@@ -429,11 +429,11 @@ struct URLSchema{
 
 extension URLSchema: Hashable{
 
-    var hashValue: Int {
+    public var hashValue: Int {
         return _hashValue;
     }
 
-    static func == (lhs: URLSchema, rhs: URLSchema) -> Bool {
+    public static func == (lhs: URLSchema, rhs: URLSchema) -> Bool {
         return lhs.hashValue == rhs.hashValue;
     }
 }
@@ -462,7 +462,7 @@ struct RoutableMetadata{
     let timestamp:Date;
 }
 
-struct Intent{
+public struct Intent{
     var url:URL? = nil;
     let path:String;
     let components:[String];
