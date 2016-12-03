@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6D4492541DF2EEAC0033EE39 /* Navigator.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D4492521DF2EEAC0033EE39 /* Navigator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6D44925B1DF2EEE50033EE39 /* Routing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D44925A1DF2EEE50033EE39 /* Routing.swift */; };
+		6D44927D1DF312840033EE39 /* Navigator.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 6D44927C1DF312840033EE39 /* Navigator.podspec */; };
+		6D44927F1DF312E00033EE39 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6D44927E1DF312E00033EE39 /* license.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +18,8 @@
 		6D4492521DF2EEAC0033EE39 /* Navigator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Navigator.h; sourceTree = "<group>"; };
 		6D4492531DF2EEAC0033EE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D44925A1DF2EEE50033EE39 /* Routing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routing.swift; sourceTree = "<group>"; };
+		6D44927C1DF312840033EE39 /* Navigator.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Navigator.podspec; sourceTree = "<group>"; };
+		6D44927E1DF312E00033EE39 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 		6D4492451DF2EEAC0033EE39 = {
 			isa = PBXGroup;
 			children = (
+				6D44927E1DF312E00033EE39 /* license.txt */,
+				6D44927C1DF312840033EE39 /* Navigator.podspec */,
 				6D4492511DF2EEAC0033EE39 /* Navigator */,
 				6D4492501DF2EEAC0033EE39 /* Products */,
 			);
@@ -126,6 +132,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D44927F1DF312E00033EE39 /* license.txt in Resources */,
+				6D44927D1DF312840033EE39 /* Navigator.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
